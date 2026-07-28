@@ -1,0 +1,6 @@
+node_modules
+package.json
+package-lock.json
+pade-mockup.psd
+.DS_Store
+*.psd

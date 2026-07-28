@@ -1,5 +1,14 @@
 {
+  "outputDirectory": ".",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "trypade.app" }],
+      "destination": "https://trypade.com/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
