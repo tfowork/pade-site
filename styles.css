@@ -822,7 +822,7 @@ ul { list-style: none; }
 }
 .feat-showcase-img {
   width: 100%;
-  max-width: 1050px;
+  max-width: 1140px;
   height: auto;
   display: block;
 }
@@ -1007,7 +1007,7 @@ ul { list-style: none; }
 
   /* 4. Banner CTAs right-aligned */
   .gs-banner .btn,
-  .quad-callout .btn { align-self: flex-end; }
+  .quad-callout .btn { align-self: center; }
 
   /* 5. How It Works: step number left of title */
   .step {
@@ -1047,5 +1047,5 @@ ul { list-style: none; }
     text-align: center;
     padding: 12vw 8% 0;
   }
-  .dash-showcase-headline { max-width: 100%; font-size: 3rem; padding-top: 72px; }
+  .dash-showcase-headline { max-width: 100%; font-size: 3rem; padding-top: 57px; }
 }

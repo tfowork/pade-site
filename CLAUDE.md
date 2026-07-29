@@ -219,3 +219,12 @@ This script deploys to Vercel production AND aliases `trypade.com` in one step. 
 - Primary: https://trypade.com
 - Alias: https://trypade.app (redirects to trypade.com)
 - Vercel: https://pade-site.vercel.app
+
+### What "push" means for this project
+
+When the user says **"push"** (just that word, no further detail), it means the full pipeline, not just `git push`:
+1. Commit any pending changes (ask first only if the commit message/scope is ambiguous — otherwise just write a reasonable message and commit)
+2. `git push origin main` — verify the active `gh`/git account has write access to `tfowork/pade-site` first (this repo has required switching from a default `AllAgesShows` account to `tfowork` before)
+3. Run `./deploy.sh` to actually deploy to Vercel production and alias `trypade.com`/`trypade.app`
+
+Do all three without re-confirming each step — the user has already approved this full flow for this project. Only pause and ask if something fails (e.g. push rejected, deploy errors) rather than pushing through silently.
