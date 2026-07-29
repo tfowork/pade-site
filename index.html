@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>You have A BUNCH of million dollar ideas. We built an app for that.</title>
+  <title>No hardware. No monthly fees. No excuses. Try PADE</title>
   <meta name="description" content="One login for all of your hustles. Run your business, track sales, customers, and take payments right on your phone.">
 
   <!-- Facebook Meta Tags -->
@@ -47,20 +47,23 @@
         <p class="hero-sub">
           No hardware. No monthly fees. No tech skills needed.<br>No excuses.
         </p>
-
-        <form class="hero-signup" id="hero-signup-form" action="https://script.google.com/macros/s/AKfycbyfDRpLj4BDh0UN4DbPoSuTkY4cbQtNnFUwqrHTmpZa68-By3Y_Xmo6QfQo0qXq9sv3/exec" method="POST" target="hero-signup-frame">
-          <input type="email" name="email" class="hero-signup-input" placeholder="you@email.com" required>
-          <input type="text" name="company" class="hero-signup-hp" tabindex="-1" autocomplete="off">
-          <button type="submit" class="btn btn-green hero-signup-btn">Notify Me</button>
-        </form>
-        <p class="hero-signup-note" id="hero-signup-note">Get an email the moment PADE launches. No spam, ever.</p>
-        <iframe name="hero-signup-frame" id="hero-signup-frame" style="display:none;" title="signup"></iframe>
       </div>
       <div class="hero-visual fi fi-delay-2">
         <div class="hero-glow"></div>
         <img src="public/images/mockups/dashboard-2.png" alt="PADE app" class="hero-img">
       </div>
-      <div class="hero-cta fi fi-delay-1">
+      <div class="hero-signup-wrap fi fi-delay-1">
+        <form class="hero-signup" id="hero-signup-form" action="https://script.google.com/macros/s/AKfycbyfDRpLj4BDh0UN4DbPoSuTkY4cbQtNnFUwqrHTmpZa68-By3Y_Xmo6QfQo0qXq9sv3/exec" method="POST" target="hero-signup-frame">
+          <input type="email" name="email" class="hero-signup-input" placeholder="you@email.com" required>
+          <input type="text" name="company" class="hero-signup-hp" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="source" value="pade-website-hero">
+          <input type="hidden" name="consent_text" value="By submitting, you agree to receive email updates about PADE. Unsubscribe anytime.">
+          <button type="submit" class="btn btn-green hero-signup-btn">Notify Me</button>
+        </form>
+        <p class="hero-signup-note" id="hero-signup-note">By submitting, you agree to receive email updates about PADE. Unsubscribe anytime.</p>
+        <iframe name="hero-signup-frame" id="hero-signup-frame" style="display:none;" title="signup"></iframe>
+      </div>
+      <div class="hero-cta fi fi-delay-3">
         <div class="hero-actions">
           <a href="#" class="store-btn sb-navy">
             <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -182,7 +185,10 @@
 
   <!-- DASHBOARD SHOWCASE -->
   <section class="dash-showcase">
-    <img src="public/images/mockups/dashboard-1.jpeg" alt="PADE dashboard" class="dash-showcase-img">
+    <picture>
+      <source media="(max-width: 640px)" srcset="public/images/mockups/vertical-on-concrete.jpg">
+      <img src="public/images/mockups/dashboard-1.jpeg" alt="PADE dashboard" class="dash-showcase-img">
+    </picture>
     <div class="dash-showcase-copy">
       <h2 class="h-xl dash-showcase-headline fi">Built <em>for</em> frustrated freelancers <em>by</em> frustrated freelancers.</h2>
     </div>
@@ -497,9 +503,11 @@
         <form class="hero-signup cta-signup" id="final-signup-form" action="https://script.google.com/macros/s/AKfycbyfDRpLj4BDh0UN4DbPoSuTkY4cbQtNnFUwqrHTmpZa68-By3Y_Xmo6QfQo0qXq9sv3/exec" method="POST" target="final-signup-frame">
           <input type="email" name="email" class="hero-signup-input" placeholder="you@email.com" required>
           <input type="text" name="company" class="hero-signup-hp" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="source" value="pade-website-footer">
+          <input type="hidden" name="consent_text" value="By submitting, you agree to receive email updates about PADE. Unsubscribe anytime.">
           <button type="submit" class="btn btn-green hero-signup-btn">Notify Me</button>
         </form>
-        <p class="hero-signup-note cta-signup-note" id="final-signup-note">Get an email the moment PADE launches. No spam, ever.</p>
+        <p class="hero-signup-note cta-signup-note" id="final-signup-note">By submitting, you agree to receive email updates about PADE. Unsubscribe anytime.</p>
         <iframe name="final-signup-frame" id="final-signup-frame" style="display:none;" title="signup"></iframe>
 
         <p class="cta-url">TryPade.com</p>
