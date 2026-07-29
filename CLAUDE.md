@@ -16,13 +16,18 @@ One-page static marketing site for **PADE** — a mobile POS app for freelancers
 | File | Purpose |
 |------|---------|
 | `index.html` | Single-page site, all content |
-| `styles.css` | All styles, ~1000 lines |
+| `styles.css` | All styles |
 | `Akira.otf` | Custom display font (user-supplied, do not rename) |
-| `public/images/pade-mockup-3-portrait.png` | Hero phone mockup (portrait, currently active) |
-| `public/images/pade-mockup-3-left.png` | Hero phone mockup (3/4 angle, not in use) |
-| `public/images/pade-mockup-3-landscape.png` | Landscape mockup (not in use) |
-| `vercel.json` | Vercel config (cleanUrls, security headers) |
+| `public/images/mockups/dashboard-2.png` | Hero phone mockup (angled, transparent bg, own baked-in shadow) |
+| `public/images/mockups/dashboard-1.jpeg` | Full-width flat-lay photo (opaque bg) — background image for the Dashboard Showcase section |
+| `public/images/mockups/3-screens.png` | 3-phone spread (transparent bg, own shadow) — used in What's Inside section |
+| `privacy.html` / `terms.html` | Standalone legal pages, linked from footer |
+| `vercel.json` | Vercel config — `outputDirectory: "."` is load-bearing (see note below), cleanUrls, security headers, trypade.app→trypade.com redirect |
+| `.vercelignore` | Excludes `node_modules`/`package.json`/`pade-mockup.psd` from deploys (package.json only exists for a local `canvas` mockup script, not the site itself) |
 | `netlify.toml` | Netlify fallback config |
+| `deploy.sh` | Deploys to Vercel prod and explicitly aliases both `trypade.com` and `trypade.app` to the new deployment (Vercel does not reliably auto-alias with 2 production domains attached) |
+
+**Important:** `vercel.json`'s `"outputDirectory": "."` must stay. Since `public/` exists in this repo, Vercel's "Other" framework preset auto-detects `public` as the output root — without the override, a deploy would serve only the images folder and drop the rest of the site.
 
 ---
 
@@ -53,17 +58,18 @@ Do not substitute other yellows or greens — these are exact palette values fro
 
 ## Page sections (in order)
 
-1. **Nav** — fixed, blurs on scroll, lime PADE logo, "Try PADE" lime CTA button
-2. **Hero** — dark bg, blue glow, "We built the app that *we* always *wanted*." headline. HTML split into 3 grid children: `.hero-top` (eyebrow/headline/sub), `.hero-visual` (mockup image), `.hero-cta` (store buttons + note). On mobile: stacks top → visual → cta. On desktop: 2-col grid, visual spans both rows.
+1. **Nav** — fixed, blurs on scroll, lime PADE logo, "Try PADE" lime CTA button (`href="#cta"`, scrolls to the Final CTA signup section)
+2. **Hero** — dark bg, blue glow (now scoped tightly behind the phone image, not the whole section — see Hero grid below), "Building your *dreams* is easier than you think." headline. HTML split into 3 grid children: `.hero-top` (eyebrow/headline/sub/**email signup form**), `.hero-visual` (mockup image), `.hero-cta` (store buttons + note). On mobile: stacks top → visual → cta. On desktop: 2-col grid with **image on the left** (`.hero-visual` is `grid-column: 1`), text/CTA on the right.
 3. **Intro Band** — electric blue scrolling marquee (Akira font, 28s loop), GPU-composited with `translate3d`. Trailing `·` on each segment for seamless loop. Pauses on hover.
 4. **This Is Personal** (`#why`) — white bg, 3-column comparison grid: Too Basic (Venmo/CashApp/Zelle) | Just Right (PADE, blue card) | Too Complicated (Square/Shopify/Toast)
-5. **GigSwitcher™** (`#gigswitcher`) — dark bg (`--bg-2`), 3 persona cards, blue banner callout. Headline: "You've got *a few* million dollar ideas. We built an app for that."
-6. **FourPay™** (`#checkout`) — white bg, 4 payment method cards with icon left of label (`.quad-card-top` flex row). Invoice card highlighted with blue tint + 2px blue border + "The differentiator" badge inline with label. Blue callout banner with lime "Start Today" button.
-7. **How It Works** (`#how`) — dark bg (`--bg`), steps 01–04 in Akira font (blue), 4-column grid
-8. **What's Inside** (`#features`) — **blue bg** (`--blue`), 8 feature cards with lime icon glows. Headline: "A real business app." in lime, "In your pocket." in white.
-9. **About Us** (`#team`) — off-white bg, 6 team members with square photo placeholders
-10. **Final CTA** (`#cta`) — dark bg, blue glow, "Stop spinning. Start selling.", App Store + Google Play buttons
-11. **Footer** — black, PADE lime logo, links to tfo.work
+5. **Dashboard Showcase** (`.dash-showcase`, no id) — new section between "This Is Personal" and GigSwitcher. Full-width, uncropped `dashboard-1.jpeg` flat-lay photo as the entire section (an `<img>`, not a CSS background, specifically so it can never crop regardless of viewport width). Headline overlay ("Built *for* frustrated freelancers *by* frustrated freelancers.") is absolutely positioned over the image's blank right-hand side, sized to match the hero's `.h-xl`, dark text (`var(--text)`) with a subtle text-shadow for legibility against the photo.
+6. **GigSwitcher™** (`#gigswitcher`) — dark bg (`--bg-2`), 3 persona cards, blue banner callout. Headline: "You've got *a few* million dollar ideas. We built an app for that."
+7. **FourPay™** (`#checkout`) — white bg, 4 payment method cards with icon left of label (`.quad-card-top` flex row). Invoice card highlighted with blue tint + 2px blue border + "The differentiator" badge inline with label. Blue callout banner with lime "Start Today" button.
+8. **How It Works** (`#how`) — dark bg (`--bg`), steps 01–04 in Akira font (blue), 4-column grid
+9. **What's Inside** (`#features`) — **blue bg** (`--blue`), 8 feature cards with lime icon glows. Headline: "A real business app." in lime, "In your pocket." in white. Followed by `.feat-showcase` — the `3-screens.png` image (transparent bg, own shadow, no extra CSS shadow needed) centered below the grid, max-width 1050px.
+10. **About Us** (`#team`) — off-white bg, 6 team members with square photo placeholders
+11. **Final CTA** (`#cta`) — dark bg, blue glow, "Stop spinning. Start selling." **This is now a beta email-signup section, not a download section** — the App Store/Google Play buttons were replaced with the same email signup form pattern as the hero (see "Email signup" below). Every CTA button sitewide (nav, comparison card, GigSwitcher banner, FourPay banner) links here via `href="#cta"`.
+12. **Footer** — black, PADE lime logo, links to tfo.work, privacy.html, terms.html
 
 ---
 
@@ -106,7 +112,17 @@ Blue background section. On desktop: flex column (icon above title). On mobile: 
 ### Hero grid
 Three direct children of `.hero-grid`: `.hero-top`, `.hero-visual`, `.hero-cta`.
 - Mobile (`max-width: 859px`): flex column, ordered top → visual → cta. Store buttons centered.
-- Desktop (`min-width: 860px`): 2-col CSS grid. Visual spans both rows (`grid-row: 1 / 3`).
+- Desktop (`min-width: 860px`): 2-col CSS grid, **image on the left**: `.hero-visual { grid-column: 1 }`, `.hero-top`/`.hero-cta { grid-column: 2 }`. Visual spans both rows (`grid-row: 1 / 3`). Column track widths are still `1.1fr 0.9fr` (unchanged from before the swap), so the image sits in the wider track.
+- `.hero-img` has no `max-width` cap (removed intentionally) — it fills its grid column/container width for max visual impact. Don't re-add a px cap here without checking with the user first, it was explicitly requested.
+- `.hero-glow` lives inside `.hero-visual` (not a sibling of `.container` like it originally was), absolutely centered behind the image at 150% of its box, single blue-only radial gradient, low opacity (~0.2) — kept intentionally subtle per user feedback after an earlier attempt was "too much." `.hero-img` has `z-index: 1` so it renders above the glow.
+
+### Email signup (`sheet-signup` pattern)
+Two identical forms — one in the hero (`#hero-signup-form`) under the "No excuses" sub-copy, one in the Final CTA section (`#final-signup-form`) — both POST to the same Google Apps Script Web App URL (`https://script.google.com/macros/s/AKfycbyfDRpLj4BDh0UN4DbPoSuTkY4cbQtNnFUwqrHTmpZa68-By3Y_Xmo6QfQo0qXq9sv3/exec`), which appends `[timestamp, email]` to a Google Sheet the user owns and optionally emails a signup notification. No third-party form service (Mailchimp/Formspree/etc.) — deliberately avoided per user request.
+- Forms submit to a hidden `<iframe target="...">`, **not** `fetch` — a plain form POST isn't subject to CORS the way `fetch`/XHR is, so it reliably reaches the Apps Script even though Apps Script doesn't return CORS headers. The response can't be read (opaque), so success is inferred from the iframe's `load` event firing after a real submit (a `submitted` flag ignores the iframe's initial blank-page load).
+- Both forms share one `initSignupForm(formId, frameId, noteId)` function (bottom of `index.html`, called twice) rather than duplicating the submit/load handlers.
+- Each form has a visually-hidden honeypot input (`.hero-signup-hp`) to silently drop bot submissions.
+- Styling: `.hero-signup*` classes for both instances; `.cta-signup`/`.cta-signup-note` are additive modifier classes (on top of the `.hero-signup`/`.hero-signup-note` base classes) that just add `margin: 0 auto` to center the form in the Final CTA's centered layout.
+- This exact pattern is saved as a reusable recipe named **`sheet-signup`** for reuse on other static sites — ask if it should be replicated elsewhere.
 
 ---
 
@@ -185,7 +201,7 @@ Inclusive "we built this for us" — not investor pitch, not feature dump. Targe
 
 ## Known TODOs (pending user action)
 
-- Add real App Store / Google Play links when app is live
+- Hero section still has placeholder App Store / Google Play buttons (`href="#"`) — add real links when the app is live. (The Final CTA section's store buttons were intentionally replaced with the email signup form — don't re-add them there without asking, that was a deliberate pivot to beta signup.)
 - Replace Brian Dao's lorem ipsum bio with real bio
 - Replace all `.member-photo-placeholder` divs with real headshots
 
