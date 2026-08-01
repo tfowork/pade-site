@@ -175,7 +175,7 @@ initSignupForm('final-signup-form', 'final-signup-frame', 'final-signup-note');
 |----------|------|------|
 | MC | Matt Chait | Founder & CEO |
 | CC | Cal Campbell | Co-Founder |
-| BD | Brian Dao | CTO (bio is placeholder lorem ipsum — needs real bio) |
+| BD | Brian Dao | CTO |
 | BL | Brian Lau | Operations |
 | SK | Scott Kay | Financial Lead |
 | LA | Liana Ahn | Product & UX |
@@ -213,7 +213,6 @@ Inclusive "we built this for us" — not investor pitch, not feature dump. Targe
 ## Known TODOs (pending user action)
 
 - Hero section still has placeholder App Store / Google Play buttons (`href="#"`) — add real links when the app is live. (The Final CTA section's store buttons were intentionally replaced with the email signup form — don't re-add them there without asking, that was a deliberate pivot to beta signup.)
-- Replace Brian Dao's lorem ipsum bio with real bio
 - Replace all `.member-photo-placeholder` divs with real headshots
 
 ---
