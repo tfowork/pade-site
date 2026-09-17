@@ -24,6 +24,7 @@ One-page static marketing site for **PADE** — a mobile POS app for freelancers
 | `public/images/mockups/3-screens.png` | 3-phone spread (transparent bg, own shadow) — used in What's Inside section |
 | `public/images/mockups/vertical-on-concrete.jpg` | Portrait crop of the same concrete flat-lay as `dashboard-1.jpeg`, phone near the bottom — swapped in for the Dashboard Showcase section on mobile (≤640px) via `<picture>`/`<source media>` so the headline can sit above the phone instead of beside it |
 | `privacy.html` / `terms.html` | Standalone legal pages, linked from footer |
+| `beta.html` | `/beta` — private TestFlight/Google Play onboarding page for white-glove beta testers (see "Beta onboarding page" below); `noindex, nofollow`, not linked from nav/footer, shared directly with invitees |
 | `vercel.json` | Vercel config — `outputDirectory: "."` is load-bearing (see note below), cleanUrls, security headers, trypade.app→trypade.com redirect |
 | `.vercelignore` | Excludes `node_modules`/`package.json`/`pade-mockup.psd` from deploys (package.json only exists for a local `canvas` mockup script, not the site itself) |
 | `netlify.toml` | Netlify fallback config |
@@ -44,6 +45,7 @@ One-page static marketing site for **PADE** — a mobile POS app for freelancers
 --lime-dim:  rgba(181,255,77,0.12)
 --bg:        #000000
 --white:     #FFFFFF
+--red:       #E54A3E   /* reserved for destructive/highlighted items — added to palette but not yet used anywhere on the site */
 ```
 
 Do not substitute other yellows or greens — these are exact palette values from tfo.work.
@@ -128,6 +130,26 @@ Two identical forms — one in the hero (`#hero-signup-form`, inside `.hero-sign
 - Styling: `.hero-signup*` classes for both instances; `.cta-signup`/`.cta-signup-note` are additive modifier classes (on top of the `.hero-signup`/`.hero-signup-note` base classes) that just add `margin: 0 auto` to center the form in the Final CTA's centered layout.
 - `privacy.html` has a "Website Launch Signup" section disclosing this data use — keep it in sync if the signup mechanism changes.
 - This exact pattern is saved as a reusable recipe named **`sheet-signup`** for reuse on other static sites — ask if it should be replicated elsewhere.
+- `beta.html`'s `#beta-signup-form` is a third consumer of this pattern, extended with extra fields — see "Beta onboarding page" below.
+
+---
+
+## Beta onboarding page (`beta.html`, served at `/beta`)
+
+Private, unlinked page for white-glove TestFlight/Google Play onboarding while PADE is still pending App Store/Play Store review. Not in nav or footer — shared directly with invitees. `<meta name="robots" content="noindex, nofollow">` since it's not meant to be discovered.
+
+Reuses the main brand system (`styles.css`, Akira, Inter, `.nav`/`.footer`/`.btn`/`.eyebrow` classes) rather than the lightweight standalone pattern used by `privacy.html`/`terms.html`, since this page needs to feel like part of the product, not a legal doc. Page-specific classes (`.beta-*`) live in `styles.css` under `/* ─── BETA ONBOARDING PAGE ─── */`, just above the `/* ─── Responsive ─── */` section; mobile overrides are appended as item 9 in the existing `@media (max-width: 640px)` "Mobile-only fixes" block, per the site's convention of keeping all mobile fixes in one place.
+
+Sections, in order:
+1. **Beta hero** (`.beta-hero`) — dark bg, "You're in. Let's get PADE on your phone." headline.
+2. **Step 01 — Tell us how to find you** (`.beta-section`, dark bg) — explains Apple ID vs. Google Play email, then a signup form (`#beta-signup-form`) extending the `sheet-signup` pattern (see below) with extra fields, plus a `mailto:accounts@tfo.work` fallback for anyone who'd rather email it directly.
+3. **Step 02 — Install the beta** (`.beta-section-alt`, off-white bg) — two `.beta-platform-card` cards (iPhone/TestFlight, Android/Google Play closed testing) side-by-side on desktop (`min-width: 860px`), stacked on mobile. Each card is a numbered `.beta-steps` list (CSS counters, not `<ol>` default markers) walking through: install TestFlight / get the opt-in link → accept invite → install → open app → allow Camera + Notifications permissions → create account and set up first gig. A `.beta-note-box` below the grid sets expectations on TestFlight's 90-day build expiry and limited Google Play beta slots.
+4. **FAQ** (`.beta-section`, dark bg) — 3 short Q&As (why not the App Store yet, is the Apple ID/Google Play email safe, what if I don't hear back).
+5. **Footer** — same markup as `index.html`'s footer, but the Contact link uses `accounts@tfo.work` (matching `privacy.html`/`terms.html`) rather than `index.html`'s `matt@tfo.work`.
+
+No App Store/Play Store URLs are linked from this page (deliberately) — TestFlight is described as "search TestFlight in the App Store" rather than a hardcoded App Store URL, and the Google Play opt-in link is described as something the user sends per-invitee (there's no single public link to point to yet).
+
+**Extending the `sheet-signup` pattern:** `#beta-signup-form` posts to the same Apps Script Web App URL as the hero/final-CTA forms, but with `source` value `pade-beta-page` and three extra fields beyond `email`/honeypot/`consent_text`: `name` (text), `platform` (select: `ios` / `android`), and `account_email` (the actual Apple ID or Google Play email — kept separate from `email`, the contact address, since they're often different addresses). Its own inline `<script>` block at the bottom of `beta.html` (not `initSignupForm` from `index.html`, since this is a separate page) handles the same iframe-load-based submit/success logic. **The Apps Script's `doPost` must add `name`/`platform`/`account_email` as extra Sheet columns to actually capture them** — same manual, out-of-repo edit as `source`/`consent_text` were.
 
 ---
 
@@ -145,6 +167,7 @@ All mobile fixes are in three media query blocks at the end of `styles.css`:
   - What's Inside: CSS grid with icon left of title
   - Team: 2-column grid
   - Dashboard Showcase: swaps to `vertical-on-concrete.jpg` (via the `<picture>` in the HTML), repositions `.dash-showcase-copy` to top-center, bumps `.dash-showcase-headline` to `3rem`/`padding-top: 57px`
+  - Beta page (item 9): `.beta-form-row` stacks (name/email fields go from side-by-side to full-width), `.beta-platform-card` gets tighter padding
 
 ---
 

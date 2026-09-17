@@ -20,6 +20,7 @@
   --lime:        #B5FF4D;
   --lime-dark:   #8FCC30;
   --lime-dim:    rgba(181,255,77,0.12);
+  --red:         #E54A3E; /* reserved for destructive/highlighted items — not yet used anywhere */
 
   /* Dark surfaces */
   --bg:          #000000;
@@ -958,6 +959,82 @@ ul { list-style: none; }
 .footer-links a:hover { color: var(--on-dark); }
 .footer-copy   { font-size: 0.725rem; color: var(--on-dark-3); }
 
+/* ─── BETA ONBOARDING PAGE ───────────────────────────────── */
+.beta-hero {
+  background: var(--bg);
+  padding: 120px 0 56px;
+  text-align: center;
+}
+.beta-hero .eyebrow { margin: 0 auto 18px; }
+.beta-hero .h-xl { color: var(--on-dark); max-width: 720px; margin: 0 auto 16px; }
+.beta-hero-sub { color: var(--on-dark-2); font-size: 1.05rem; max-width: 580px; margin: 0 auto; line-height: 1.7; }
+
+.beta-section { background: var(--bg); padding: 64px 0; }
+.beta-section-alt { background: var(--off-white); }
+.beta-step-label { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.beta-step-num { font-size: 1.5rem; color: var(--lime); }
+.beta-step-heading { font-size: 1.4rem; font-weight: 700; color: var(--on-dark); }
+.beta-step-intro { color: var(--on-dark-2); max-width: 640px; margin-bottom: 32px; line-height: 1.75; }
+
+/* Signup form (extends .hero-signup patterns) */
+.beta-form { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
+.beta-form-row { display: flex; gap: 10px; }
+.beta-form-row .hero-signup-input { flex: 1; min-width: 0; }
+.beta-select {
+  padding: 14px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+  color: var(--on-dark);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+.beta-form-note { max-width: 480px; }
+.beta-alt-contact { margin-top: 20px; font-size: 0.875rem; color: var(--on-dark-2); }
+.beta-alt-contact a { color: var(--lime); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Platform cards */
+.beta-platform-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 860px) { .beta-platform-grid { grid-template-columns: 1fr 1fr; } }
+.beta-platform-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+}
+.beta-platform-title { font-size: 1.1rem; color: var(--blue); margin-bottom: 6px; }
+.beta-platform-sub { font-size: 0.825rem; color: var(--text-3); margin-bottom: 24px; }
+.beta-steps { display: flex; flex-direction: column; gap: 20px; counter-reset: beta-step; }
+.beta-steps li { list-style: none; display: flex; gap: 14px; counter-increment: beta-step; }
+.beta-steps li::before {
+  content: counter(beta-step);
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--blue-dim);
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.beta-steps li strong { display: block; color: var(--text); font-size: 0.925rem; margin-bottom: 2px; }
+.beta-steps li span { color: var(--text-2); font-size: 0.875rem; line-height: 1.6; }
+
+.beta-note-box {
+  margin-top: 28px;
+  padding: 16px 20px;
+  background: var(--white);
+  border-radius: var(--radius);
+  font-size: 0.825rem;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+.beta-note-box strong { color: var(--text); }
+
+.beta-faq { max-width: 640px; margin: 0 auto; text-align: center; }
+.beta-faq-item { margin-bottom: 28px; }
+.beta-faq-item h3 { font-size: 1rem; color: var(--on-dark); margin-bottom: 8px; }
+.beta-faq-item p { font-size: 0.9rem; color: var(--on-dark-2); line-height: 1.7; }
+
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 640px) {
   .for-section, .gs-section, .how-section, .feat-section, .team-section, .cta-section { padding: 72px 0; }
@@ -1048,4 +1125,8 @@ ul { list-style: none; }
     padding: 12vw 8% 0;
   }
   .dash-showcase-headline { max-width: 100%; font-size: 3rem; padding-top: 57px; }
+
+  /* 9. Beta onboarding page: stack form row, tighter platform card padding */
+  .beta-form-row { flex-direction: column; }
+  .beta-platform-card { padding: 24px 20px; }
 }

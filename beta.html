@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow">
+  <title>PADE Beta — Get Started</title>
+  <meta name="description" content="Get PADE early. Follow these steps to join the private beta on iPhone (TestFlight) or Android (Google Play).">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner container">
+      <a href="/" class="nav-logo">PADE</a>
+      <a href="/" class="btn btn-green btn-sm">trypade.com</a>
+    </div>
+  </nav>
+
+  <!-- BETA HERO -->
+  <section class="beta-hero">
+    <div class="container">
+      <div class="eyebrow ey-lime akira fi">Private Beta</div>
+      <h1 class="h-xl fi fi-delay-1">You're in. Let's get PADE on your phone.</h1>
+      <p class="beta-hero-sub fi fi-delay-2">
+        We're onboarding beta testers one at a time while PADE finishes App Store and Google Play review.
+        Follow the steps below — you can be up and running today.
+      </p>
+    </div>
+  </section>
+
+  <!-- STEP 1: SUBMIT INFO -->
+  <section class="beta-section">
+    <div class="container">
+      <div class="beta-step-label fi">
+        <span class="beta-step-num akira">01</span>
+        <span class="beta-step-heading">Tell us how to find you</span>
+      </div>
+      <p class="beta-step-intro fi">
+        Beta invites go out by hand, so we need one thing from you first: the email tied to your phone's app
+        store account. On iPhone that's your <strong style="color:var(--on-dark);">Apple ID</strong> email — check
+        Settings → your name at the top of the screen if you're not sure, since it's often different from your
+        everyday inbox. On Android it's the Gmail account signed into the Play Store app.
+      </p>
+
+      <form class="beta-form fi" id="beta-signup-form" action="https://script.google.com/macros/s/AKfycbyfDRpLj4BDh0UN4DbPoSuTkY4cbQtNnFUwqrHTmpZa68-By3Y_Xmo6QfQo0qXq9sv3/exec" method="POST" target="beta-signup-frame">
+        <div class="beta-form-row">
+          <input type="text" name="name" class="hero-signup-input" placeholder="Your name" required>
+          <input type="email" name="email" class="hero-signup-input" placeholder="Your contact email" required>
+        </div>
+        <select name="platform" class="beta-select" required>
+          <option value="" disabled selected>Which phone do you have?</option>
+          <option value="ios">iPhone (TestFlight)</option>
+          <option value="android">Android (Google Play)</option>
+        </select>
+        <input type="email" name="account_email" class="hero-signup-input" placeholder="Apple ID or Google Play email" required>
+        <input type="text" name="company" class="hero-signup-hp" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="source" value="pade-beta-page">
+        <input type="hidden" name="consent_text" value="By submitting, you agree to be added to PADE's private beta list and contacted about your invite.">
+        <button type="submit" class="btn btn-green hero-signup-btn">Request Beta Access</button>
+      </form>
+      <p class="hero-signup-note beta-form-note" id="beta-signup-note">
+        By submitting, you agree to be added to PADE's private beta list and contacted about your invite.
+      </p>
+      <iframe name="beta-signup-frame" id="beta-signup-frame" style="display:none;" title="signup"></iframe>
+
+      <p class="beta-alt-contact fi">
+        Prefer email? Send your name, phone type, and Apple ID or Google Play email to
+        <a href="mailto:accounts@tfo.work">accounts@tfo.work</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- STEP 2: INSTALL -->
+  <section class="beta-section beta-section-alt">
+    <div class="container">
+      <div class="beta-step-label fi">
+        <span class="beta-step-num akira">02</span>
+        <span class="beta-step-heading" style="color:var(--text);">Install the beta</span>
+      </div>
+      <p class="beta-step-intro fi" style="color:var(--text-2);">
+        Once we add you, follow the steps for your phone below.
+      </p>
+
+      <div class="beta-platform-grid fi">
+        <div class="beta-platform-card">
+          <div class="beta-platform-title akira">iPhone</div>
+          <div class="beta-platform-sub">via Apple TestFlight</div>
+          <ol class="beta-steps">
+            <li><div><strong>Install TestFlight</strong><span>Search "TestFlight" in the App Store and install it — it's Apple's free, official app for testing betas.</span></div></li>
+            <li><div><strong>Wait for your invite</strong><span>Once we add your Apple ID, Apple emails you an invite (check spam). Usually within 1 business day.</span></div></li>
+            <li><div><strong>Accept &amp; install</strong><span>Open the invite email on your iPhone, tap "View in TestFlight," then "Accept," then "Install."</span></div></li>
+            <li><div><strong>Open PADE</strong><span>Launch PADE from your home screen, just like any other app.</span></div></li>
+            <li><div><strong>Allow permissions</strong><span>Tap Allow for Camera (to scan and show QR codes at checkout) and Allow for Notifications (so you know the moment a sale comes in).</span></div></li>
+            <li><div><strong>Set up your gig</strong><span>Create your account, add your first gig, and you're live.</span></div></li>
+          </ol>
+        </div>
+
+        <div class="beta-platform-card">
+          <div class="beta-platform-title akira">Android</div>
+          <div class="beta-platform-sub">via Google Play beta</div>
+          <ol class="beta-steps">
+            <li><div><strong>Send your Google Play email</strong><span>Same as Step 1 — it's the Gmail account signed into your Play Store app (Play Store → your profile icon, top right).</span></div></li>
+            <li><div><strong>Get your opt-in link</strong><span>Once we add you to the closed testing group, we'll email you a link to join.</span></div></li>
+            <li><div><strong>Become a tester</strong><span>Open that link on your Android phone, tap "Become a tester," then tap the Play Store link it gives you.</span></div></li>
+            <li><div><strong>Install PADE</strong><span>Install PADE from the Play Store, just like any other app.</span></div></li>
+            <li><div><strong>Allow permissions</strong><span>Allow Camera (for QR code payments) and Notifications (for sale alerts) when prompted.</span></div></li>
+            <li><div><strong>Set up your gig</strong><span>Create your account, add your first gig, and you're live.</span></div></li>
+          </ol>
+        </div>
+      </div>
+
+      <p class="beta-note-box fi">
+        <strong>Heads up —</strong> TestFlight builds expire after 90 days, and Google Play beta spots are limited
+        while we're in private testing. We'll re-invite you as needed, and email you the moment PADE goes fully public.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="beta-section">
+    <div class="container beta-faq">
+      <div class="eyebrow ey-blue fi" style="margin: 0 auto 24px;">Questions</div>
+      <div class="beta-faq-item fi">
+        <h3>Why can't I just download PADE from the App Store?</h3>
+        <p>We're finishing Apple and Google's review process. Until then, we're onboarding testers by hand through TestFlight and Google Play's closed testing — it's the same app, just an earlier door in.</p>
+      </div>
+      <div class="beta-faq-item fi">
+        <h3>Is my Apple ID or Google Play email safe with you?</h3>
+        <p>We only use it to add you as a tester in App Store Connect or Google Play Console. We never see your password — Apple and Google handle sign-in entirely on their end.</p>
+      </div>
+      <div class="beta-faq-item fi">
+        <h3>What if I don't hear back?</h3>
+        <p>Email us at <a href="mailto:accounts@tfo.work" style="color:var(--lime);">accounts@tfo.work</a> and we'll get you sorted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-logo">PADE</div>
+        <div class="footer-parent">A <a href="https://tfo.work" target="_blank" rel="noopener">Future of Work</a> product</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:accounts@tfo.work">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-copy">© 2026 The Future of Work. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('on');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+    // Nav border on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Beta signup form — posts to a hidden iframe targeting a Google Apps Script
+    // Web App, so it works cross-origin without a CORS preflight blocking it.
+    (function () {
+      const form = document.getElementById('beta-signup-form');
+      const note = document.getElementById('beta-signup-note');
+      const frame = document.getElementById('beta-signup-frame');
+      let submitted = false;
+      form.addEventListener('submit', (e) => {
+        if (form.querySelector('.hero-signup-hp').value) {
+          e.preventDefault();
+          return;
+        }
+        submitted = true;
+      });
+      frame.addEventListener('load', () => {
+        if (!submitted) return;
+        form.style.display = 'none';
+        note.textContent = "You're on the list — we'll email your invite within 1 business day.";
+      });
+    })();
+  </script>
+
+</body>
+</html>
