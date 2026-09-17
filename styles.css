@@ -974,7 +974,13 @@ ul { list-style: none; }
 .beta-step-label { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
 .beta-step-num { font-size: 1.5rem; color: var(--lime); }
 .beta-step-heading { font-size: 1.4rem; font-weight: 700; color: var(--on-dark); }
-.beta-step-intro { color: var(--on-dark-2); max-width: 640px; margin-bottom: 32px; line-height: 1.75; }
+.beta-step-intro { color: var(--on-dark-2); max-width: 640px; margin-bottom: 24px; line-height: 1.75; }
+.beta-section-alt .beta-step-num { color: var(--blue); }
+
+.beta-checklist { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; max-width: 620px; }
+.beta-checklist li { display: flex; gap: 12px; color: var(--on-dark-2); font-size: 0.95rem; line-height: 1.6; }
+.beta-checklist li::before { content: '→'; color: var(--lime); flex-shrink: 0; font-weight: 700; }
+.beta-checklist li strong { color: var(--on-dark); }
 
 /* Signup form (extends .hero-signup patterns) */
 .beta-form { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
