@@ -846,8 +846,9 @@ ul { list-style: none; }
   grid-template-columns: 1fr;
   gap: 20px;
 }
-@media (min-width: 600px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 960px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+.team-grid-bottom { margin-top: 20px; }
+@media (min-width: 600px) { .team-grid-top { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .team-grid-bottom { grid-template-columns: repeat(3, 1fr); } }
 .member {
   background: var(--white);
   border: 1px solid var(--border);
@@ -1117,8 +1118,7 @@ ul { list-style: none; }
   .feat-title     { grid-column: 2; grid-row: 1; align-self: center; }
   .feat-desc      { grid-column: 1 / -1; grid-row: 2; }
 
-  /* 7. Team: 2 columns on mobile */
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  /* 7. Team: tighter card padding on mobile (layout itself is row-specific — see .team-grid-top/-bottom) */
   .member-info { padding: 14px; }
   .member-name { font-size: 0.65rem; }
   .member-bio  { font-size: 0.75rem; }

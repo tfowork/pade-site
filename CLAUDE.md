@@ -71,7 +71,7 @@ Do not substitute other yellows or greens — these are exact palette values fro
 7. **FourPay™** (`#checkout`) — white bg, 4 payment method cards with icon left of label (`.quad-card-top` flex row). Invoice card highlighted with blue tint + 2px blue border + "The differentiator" badge inline with label. Blue callout banner with lime "Start Today" button.
 8. **How It Works** (`#how`) — dark bg (`--bg`), steps 01–04 in Akira font (blue), 4-column grid
 9. **What's Inside** (`#features`) — **blue bg** (`--blue`), 8 feature cards with lime icon glows. Headline: "A real business app." in lime, "In your pocket." in white. Followed by `.feat-showcase` — the `3-screens.png` image (transparent bg, own shadow, no extra CSS shadow needed) centered below the grid, max-width 1140px (container caps at 1160px, so it's intentionally close to full-bleed).
-10. **About Us** (`#team`) — off-white bg, 6 team members with square photo placeholders
+10. **About Us** (`#team`) — off-white bg, 5 team members in two explicit row groups (not one auto-flowing grid): `.team-grid-top` (Matt Chait + Cal Campbell, 50/50 at ≥600px) and `.team-grid-bottom` (Brian Lau, Brian Dao, Liana Ahn, 33/33/33 at ≥960px). Both collapse to a single column below their breakpoint. Scott Kay was removed from the team entirely per user request.
 11. **Final CTA** (`#cta`) — dark bg, blue glow, "Stop spinning. Start selling." **This is now a beta email-signup section, not a download section** — the App Store/Google Play buttons were replaced with the same email signup form pattern as the hero (see "Email signup" below). Every CTA button sitewide (nav, comparison card, GigSwitcher banner, FourPay banner) links here via `href="#cta"`.
 12. **Footer** — black, PADE lime logo, links to tfo.work, privacy.html, terms.html
 
@@ -170,7 +170,7 @@ All mobile fixes are in three media query blocks at the end of `styles.css`:
   - Banner CTAs (`gs-banner`, `quad-callout`) buttons **centered** (`align-self: center`) — was right-aligned originally, changed per user request
   - How It Works steps: CSS grid with number left of title
   - What's Inside: CSS grid with icon left of title
-  - Team: 2-column grid
+  - Team: card padding/text sizes tightened (the 2-row 50/50 + 33/33/33 layout itself lives in `.team-grid-top`/`.team-grid-bottom`'s own breakpoints, not here)
   - Dashboard Showcase: swaps to `vertical-on-concrete.jpg` (via the `<picture>` in the HTML), repositions `.dash-showcase-copy` to top-center, bumps `.dash-showcase-headline` to `3rem`/`padding-top: 57px`
   - Beta page (item 9): `.beta-form-row` stacks (name/email fields go from side-by-side to full-width), `.beta-platform-card` gets tighter padding
 
@@ -199,16 +199,19 @@ initSignupForm('final-signup-form', 'final-signup-frame', 'final-signup-note');
 
 ## Team members
 
-| Initials | Name | Role |
-|----------|------|------|
-| MC | Matt Chait | Founder & CEO |
-| CC | Cal Campbell | Co-Founder |
-| BD | Brian Dao | CTO |
-| BL | Brian Lau | Operations |
-| SK | Scott Kay | Financial Lead |
-| LA | Liana Ahn | Product & UX |
+Displayed in two row groups on the About Us section — see "Page sections" above.
 
-To add a real headshot, replace `<div class="member-photo-placeholder">XX</div>` with `<img src="photo.jpg" alt="Name">` inside the `.member-photo` div.
+| Initials | Name | Role | Row |
+|----------|------|------|-----|
+| MC | Matt Chait | Founder & CEO | Top (50/50) |
+| CC | Cal Campbell | Co-Founder | Top (50/50) |
+| BL | Brian Lau | Operations | Bottom (33/33/33) |
+| BD | Brian Dao | CTO | Bottom (33/33/33) |
+| LA | Liana Ahn | Product & UX | Bottom (33/33/33) |
+
+Scott Kay (formerly Financial Lead) was removed from the team section per user request — no longer on the page or in this table.
+
+No `.member-photo`/`.member-photo-placeholder` markup currently exists in `index.html`'s team cards (text-only `.member-info` blocks) — the CSS classes still exist in `styles.css` if photos are added later.
 
 ---
 
@@ -241,7 +244,7 @@ Inclusive "we built this for us" — not investor pitch, not feature dump. Targe
 ## Known TODOs (pending user action)
 
 - Hero section still has placeholder App Store / Google Play buttons (`href="#"`) — add real links when the app is live. (The Final CTA section's store buttons were intentionally replaced with the email signup form — don't re-add them there without asking, that was a deliberate pivot to beta signup.)
-- Replace all `.member-photo-placeholder` divs with real headshots
+- Add real headshots for the 5 team members (currently text-only cards, no photo markup in the HTML)
 
 ---
 
